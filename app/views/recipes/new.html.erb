@@ -1,0 +1,50 @@
+<h1>Recipes</h1>
+
+<div class="row">
+
+<div class="col-sm-6">	
+
+
+<h3>Search for Recipes</h3>
+<form class="form" action="/recipes/new" method="post">
+<input type="hidden" name="authenticity_token" placeholder="<%= form_authenticity_token %>">
+<input type="text" name="keyword" placeholder="Keyword to Search">
+<input type="submit" value="Submit">
+</form>
+
+
+<% if @options %>
+<% @options.each do |recipe| %>
+
+<h3><%= link_to "#{recipe["title"]}", show_recipe_path(id: recipe["recipe_id"]), method: :post %></h3>
+<%= link_to "Save", save_recipe_path(id: recipe['recipe_id'], title: recipe['title'], publisher: recipe["publisher"], publisher_url: recipe["publisher_url"], rank: recipe["social_rank"], img: recipe["image_url"]), method: :post %> 
+<p><%= link_to "#{recipe["publisher"]}", "#{recipe["publisher_url"]}" %></p>
+<p>Public Ranking: <%= recipe["social_rank"] %></p>
+<p><img src="<%= recipe["image_url"] %>" /></p>
+
+<% end %>
+<% end %>
+</div>
+
+<div class="col-sm-6">	
+
+<h3>Recipes You Have Saved</h3>
+
+<% if @likes %>
+<% @likes.each do |recipe| %>
+
+<h3><%= link_to "#{recipe.title}", show_recipe_path(id: recipe['recipe_id']), method: :post %></h3>
+<%= link_to "Unsave", unsave_recipe_path(id: recipe.id), method: :delete%> 
+<p><%= link_to "#{recipe.publisher}", "#{recipe.publisher_url}" %></p>
+<p>Public Ranking: <%= recipe.rank %></p>
+<p><img src="<%= recipe.img %>" /></p>
+</div>
+
+<% end %>
+<% end %>
+
+
+
+
+</div>
+</div>

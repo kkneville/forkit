@@ -1,0 +1,23 @@
+<div class="row">
+<div class="col-sm-12">	
+
+<h3>Recipes You Have Saved</h3>
+
+<% if @likes %>
+<% @likes.each do |recipe| %>
+
+<h3><%= link_to "#{recipe.title}", show_recipe_path(id: recipe['recipe_id']), method: :post %></h3>
+<%= link_to "Unsave", unsave_recipe_path(id: recipe.id), method: :delete%> 
+<p><%= link_to "#{recipe.publisher}", "#{recipe.publisher_url}" %></p>
+<p>Public Ranking: <%= recipe.rank %></p>
+<p><img src="<%= recipe.img %>" /></p>
+</div>
+
+<% end %>
+<% end %>
+
+
+
+
+</div>
+</div>
