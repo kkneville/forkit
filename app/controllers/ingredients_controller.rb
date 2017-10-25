@@ -14,9 +14,8 @@ class IngredientsController < ApplicationController
       ing.meal_id = meal.id
       ing.save
     end
-    p session[:list]
     session.delete(:list)
-    return redirect_to new_mealplan_path
+    return redirect_to find_recipes_path
   end
 
   def show

@@ -81,11 +81,11 @@ Rails.application.routes.draw do
 
   get 'meals/update'
 
-  delete 'meals/delete'
+  delete 'meals/delete' => 'meals#delete', as: 'delete_meal'
 
  #MEALPLAN
  
-  get 'mealplan/index'
+  get 'mealplan/index' => 'mealplan#index', as: 'mealplans'
 
   get 'mealplan/new' => 'mealplan#new', as: 'start_mealplan'
 

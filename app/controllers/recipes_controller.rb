@@ -14,13 +14,13 @@ class RecipesController < ApplicationController
     reponse = JSON.parse(Net::HTTP.get(URI.parse("http://food2fork.com/api/search?key=91c70198fb6803137c6990f067c53c0d&q=#{@keyword}")))
     p @options
 
-    @likes = Like.all.where(user: current_user).reverse
+    @saved = Meal.all.where(user: current_user).reverse
 
-    recipe_ids = Like.all.where(user: current_user).pluck(:recipe_id)
+    # recipe_ids = Like.all.where(user: current_user).pluck(:recipe_id)
 
     @options = response["recipe"]
 
-    
+
     # @results = response["recipes"]
     # @results.each do |recipe|
     #   if recipe_ids.include? recipe["recipe_id"]

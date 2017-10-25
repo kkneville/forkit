@@ -3,6 +3,10 @@ class MealplanController < ApplicationController
   end
 
   def new
+    if session[:meal]
+      @meal = Meal.find(session[:meal])
+    end  
+    @mealplans = Mealplan.all
   end
 
   def create

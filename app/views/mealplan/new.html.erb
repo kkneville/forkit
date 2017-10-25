@@ -1,2 +1,31 @@
-<h1>Mealplan#new</h1>
-<p>Find me in app/views/mealplan/new.html.erb</p>
+
+<h2>Select or Create a Meal Plan</h2>
+
+<div class="row">
+<div class="col-sm-4">
+
+<form class="form" action="/mealplan/create" method="post">
+<input type="hidden" name="authenticity_token" placeholder="<%= form_authenticity_token %>">
+
+<select name="mealplan">
+	<option value="new">New</option>
+	<% if @mealplans %>
+	<% @mealplans.each do |plan| %>
+	<option value="<%= mealplan.id %>"><%= mealplan.name %></option>
+	<% end %>
+	<% end %>
+</select>	
+<p> Name for new meal plan: </p>
+<input type="text" name="name">	
+
+<p><label for="startdate">Set to this week</label>
+	<input type="checkbox" name="startdate" value="today"></p>
+
+<input type="submit" value="Add Plan">
+</form>
+
+<% if @meal %>
+<%= @meal.title %>
+<% end %>
+
+</div>
