@@ -2,7 +2,17 @@
 <div class="row">
 	<h2><%= @recipe['recipe']['title'].titleize %></h2>
 
-<%= link_to "Add to Meal Plan", add_meal_path(id: @recipe['recipe']['recipe_id'], title: @recipe['recipe']['title'], source: @recipe['recipe']['source_url'], img: @recipe['recipe']['image_url'], publisher: @recipe['recipe']["publisher"], publisher_url: @recipe['recipe']["publisher_url"], rank: @recipe['recipe']["social_rank"], ing: @recipe['recipe']['ingredients']), method: :post  %>
+<%= link_to "Add to Meal Plan", add_meal_path(
+	id: @recipe['recipe']['recipe_id'], 
+	title: @recipe['recipe']['title'], 
+	source: @recipe['recipe']['source_url'], 
+	img: @recipe['recipe']['image_url'], 
+	publisher: @recipe['recipe']["publisher"], 
+	publisher_url: @recipe['recipe']["publisher_url"], 
+	rank: @recipe['recipe']["social_rank"], 
+	ing: @recipe['recipe']['ingredients']
+	), 
+	method: :post  %>
 | <%= link_to "View Directions", "#{@recipe['recipe']['source_url']}" %>
 </div>	
 

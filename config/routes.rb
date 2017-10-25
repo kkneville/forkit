@@ -89,7 +89,7 @@ Rails.application.routes.draw do
 
   get 'mealplan/new'
 
-  get 'mealplan/create' 
+  get 'mealplan/create' => 'mealplan#create', as: 'create_mealplan'
 
   get 'mealplan/show' 
 
@@ -121,7 +121,7 @@ Rails.application.routes.draw do
 
   get 'ingredients/new'
 
-  get 'ingredients/create' 
+  get 'ingredients/create' => 'ingredients#create', as: "add_ingredient"
 
   get 'ingredients/show' 
 

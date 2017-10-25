@@ -19,6 +19,8 @@ class RecipesController < ApplicationController
     recipe_ids = Like.all.where(user: current_user).pluck(:recipe_id)
 
     @options = response["recipe"]
+
+    
     # @results = response["recipes"]
     # @results.each do |recipe|
     #   if recipe_ids.include? recipe["recipe_id"]

@@ -6,14 +6,17 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    list = sessions[:list]
+    meal = Meal.find(session[:meal])
+    list = session[:list]
     list.each do |item|
       ing = Ingredient.new
-      ing.name = item
+      ing.item_id = item
+      ing.meal_id = meal.id
       ing.save
     end
-    session.delete[:list]
-    return redirect_to create_meal_plan
+    p session[:list]
+    session.delete(:list)
+    return redirect_to create_mealplan_path
   end
 
   def show
