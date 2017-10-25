@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
     @keyword = params[:keyword]
 
     reponse = JSON.parse(Net::HTTP.get(URI.parse("http://food2fork.com/api/search?key=91c70198fb6803137c6990f067c53c0d&q=#{@keyword}")))
-    p @options
+    print response
 
     @saved = Meal.all.where(user: current_user).reverse
 
@@ -29,6 +29,8 @@ class RecipesController < ApplicationController
     # end   
 
 
+
+
   end
 
 
@@ -39,7 +41,8 @@ class RecipesController < ApplicationController
   def show
     @id = params[:id]
     @recipe = JSON.parse(Net::HTTP.get(URI.parse("http://food2fork.com/api/get?key=91c70198fb6803137c6990f067c53c0d&rId=#{@id}")))
-    puts @recipe
+    puts @recipe 
+
   end
 
   def edit

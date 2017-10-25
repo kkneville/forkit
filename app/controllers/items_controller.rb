@@ -6,7 +6,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    ingredients = session[:ingredients]
+    recipe = session[:recipe]
+    ingredients = recipe['recipe']['ingredients']
     p ingredients
     list = []
     ingredients.each do |ing|

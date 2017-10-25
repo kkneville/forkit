@@ -75,7 +75,7 @@ Rails.application.routes.draw do
 
   post 'meals/create' => 'meals#create', as: 'add_meal'
 
-  get 'meals/show' 
+  post 'meals/show' => 'meals#show', as: 'show_meal'
 
   get 'meals/edit'
 

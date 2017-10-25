@@ -17,17 +17,20 @@
 <% @options.each do |recipe| %>
 
 <h3><%= link_to "#{recipe["title"]}", show_recipe_path(id: recipe["recipe_id"]), method: :post %></h3>
+
 <%= link_to "Save", add_meal_path(
-	id: @recipe['recipe']['recipe_id'], 
-	title: @recipe['recipe']['title'], 
-	source: @recipe['recipe']['source_url'], 
-	img: @recipe['recipe']['image_url'], 
-	publisher: @recipe['recipe']["publisher"], 
-	publisher_url: @recipe['recipe']["publisher_url"], 
-	rank: @recipe['recipe']["social_rank"], 
-	ing: @recipe['recipe']['ingredients']
-	), 
-	method: :post  %>
+  id: @recipe['recipe_id'], 
+  title: @recipe['title'], 
+  source: @recipe['source_url'],
+  img: @recipe['image_url'], 
+  publisher: @recipe["publisher"], 
+  publisher_url: @recipe["publisher_url"], 
+  rank: @recipe["social_rank"], 
+  ing: @recipe['ingredients']
+  ), 
+  method: :post %>
+
+
 <p><%= link_to "#{recipe["publisher"]}", "#{recipe["publisher_url"]}" %></p>
 <p>Public Ranking: <%= recipe["social_rank"] %></p>
 <p><img src="<%= recipe["image_url"] %>" /></p>

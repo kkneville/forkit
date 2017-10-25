@@ -16,8 +16,11 @@ class MealsController < ApplicationController
     meal.rank = params[:rank]
     meal.user = current_user
     meal.save
-    session[:ingredients] = params[:ing]
     session[:meal] = meal.id
+
+    @id = params[:id]
+    @recipe = JSON.parse(Net::HTTP.get(URI.parse("http://food2fork.com/api/get?key=91c70198fb6803137c6990f067c53c0d&rId=#{@id}")))
+    session[:recipe] = @recipe
 
     return redirect_to create_items_path
   end
