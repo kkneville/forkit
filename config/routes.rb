@@ -87,9 +87,11 @@ Rails.application.routes.draw do
  
   get 'mealplan/index'
 
-  get 'mealplan/new'
+  get 'mealplan/new' => 'mealplan#new', as: 'start_mealplan'
 
-  get 'mealplan/create' => 'mealplan#create', as: 'create_mealplan'
+  post 'mealplan/new' => 'mealplan#new', as: 'new_mealplan'
+
+  post 'mealplan/create' => 'mealplan#create', as: 'create_mealplan'
 
   get 'mealplan/show' 
 

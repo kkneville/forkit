@@ -16,7 +16,7 @@ class IngredientsController < ApplicationController
     end
     p session[:list]
     session.delete(:list)
-    return redirect_to create_mealplan_path
+    return redirect_to new_mealplan_path
   end
 
   def show
